@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from './ListingCard.module.css'
-
+import pic from '../assets/listingpic.jpg'
 function ListingCard() {
   return (
     <div className={styles.container}>
-      <img src="" alt="" />
+      <div className={styles.tag}>Avallable Now</div>
+      <img src={pic} alt="" />
       <div className={styles.info_container}>
         <div className={styles.main_info}>
           <div>
@@ -34,7 +35,7 @@ function ListingCard() {
 
       </div>
 
-      <div>
+      <div className={styles.details} >
         <a href="">View Details </a>
       </div>
 

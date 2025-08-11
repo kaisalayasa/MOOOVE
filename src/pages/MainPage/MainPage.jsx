@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './MainPage.module.css'
 import ListingCard from '../../components/ListingCard'
+import ExplanationCard from '../../components/ExplanationCard'
+import logo from '../../assets/MainLogo.png'
 
 function MainPage() {
   return (
@@ -75,9 +77,51 @@ function MainPage() {
 
 
     </section>
-    <section className={styles.info}>
+    <section className={styles.explanation}>
+      <div style={{textAlign: "center"}}>   
+        <h1> How Mooove Works</h1>
+      </div>
+      <div className={styles.info_cards}>
+        <ExplanationCard/>
+         <ExplanationCard/>
+          <ExplanationCard/>
+
+      </div>
 
     </section>
+
+    <section className={styles.end}>
+        <div style={{textAlign: "center"}}>   
+        <h1> Ready to Find Your College Sublet?</h1>
+        <p>Whether you're looking for summer housing or need to sublease your apartment while studying abroad, we've got you covered.</p>
+      </div>
+      <div className={styles.end_buttons_layout}>
+         <a>Post A Listing</a>
+
+        <a>Search Available Sublets</a>
+       
+      </div>
+      
+      
+
+
+
+
+    </section>
+      <footer className={styles.footer}>
+      <div className={styles.logo_container}>
+        <img src={logo} alt="MOOOVE" className={styles.logo} />
+        <h3 className={styles.title}>MOOOVE</h3>
+      </div>
+      <div className={styles.links}>
+        <a href="https://www.linkedin.com/in/qais-alayasa-204b121a2/" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+        <a href="https://github.com/kaisalayasa/MOOOVE" target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+      </div>
+    </footer>
 
 
     
