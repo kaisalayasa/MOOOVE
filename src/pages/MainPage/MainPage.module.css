@@ -13,12 +13,17 @@
     background-color: #fcedff;
     align-items: center;
     column-gap: 15px;
+    justify-content: space-between;
 }
 
 .hero_text h1{
     font-size: 32px;
 }
-.hero_text h1,p{
+.hero_text h1{
+    margin: 0px;
+    padding: 5px;
+}
+.hero_text p{
     margin: 0px;
     padding: 5px;
 }
@@ -77,5 +82,108 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    column-gap: 10px;
 }
    
+.explanation{
+    background-color: #fafafb;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.info_cards{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    column-gap: 10px;
+}
+.end{
+    padding-top: 30px;
+    background-color: #fef3ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.end_buttons_layout {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+}
+
+/* Base button style for both links */
+.end_buttons_layout a {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 2px solid #f5c5fe;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+/* First button style */
+.end_buttons_layout a:first-child {
+    background-color: white;
+    color: #dd39fc;
+}
+.end_buttons_layout a:first-child:hover {
+    background-color: #ffecfc;
+}
+
+/* Second button style */
+.end_buttons_layout a:last-child {
+    background-color: #dd39fc;
+    color: white;
+}
+.end_buttons_layout a:last-child:hover {
+    background-color: #c018db;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e2936;
+  padding: 12px 20px;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  color: white;
+  padding: 10px 30px;
+}
+
+.logo_container {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.title {
+  font-weight: 600;
+
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  column-gap: 16px;
+}
+
+.links a {
+  color: #a5b4fc; 
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.links a:hover {
+  color: #818cf8;
+}
