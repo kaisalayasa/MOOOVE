@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './MainPage.module.css'
 import ListingCard from '../../components/ListingCard'
 import ExplanationCard from '../../components/ExplanationCard'
-import logo from '../../assets/MainLogo.png'
+import Footer from '../../components/Footer'
 
 function MainPage() {
   return (
@@ -108,20 +108,7 @@ function MainPage() {
 
 
     </section>
-      <footer className={styles.footer}>
-      <div className={styles.logo_container}>
-        <img src={logo} alt="MOOOVE" className={styles.logo} />
-        <h3 className={styles.title}>MOOOVE</h3>
-      </div>
-      <div className={styles.links}>
-        <a href="https://www.linkedin.com/in/qais-alayasa-204b121a2/" target="_blank" rel="noopener noreferrer">
-          LinkedIn
-        </a>
-        <a href="https://github.com/kaisalayasa/MOOOVE" target="_blank" rel="noopener noreferrer">
-          GitHub
-        </a>
-      </div>
-    </footer>
+    <Footer/>    
 
 
     

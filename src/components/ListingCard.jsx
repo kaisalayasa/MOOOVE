@@ -1,9 +1,13 @@
 import React from 'react'
 import styles from './ListingCard.module.css'
 import pic from '../assets/listingpic.jpg'
-function ListingCard() {
+function ListingCard({size="large"}) {
+
+
+  const sizeClass = styles[size] || styles.medium;
+
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${sizeClass}`}>
       <div className={styles.tag}>Avallable Now</div>
       <img src={pic} alt="" />
       <div className={styles.info_container}>
