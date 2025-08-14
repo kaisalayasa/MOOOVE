@@ -22,7 +22,15 @@
     border-top-right-radius: 24px;
     height: 200px;
 }
+.container.small{
+    width: 350px;
+    
+ 
+}
+.container.small img{
+    width: 350px;
 
+}
 .tag{
     position: absolute;
     
