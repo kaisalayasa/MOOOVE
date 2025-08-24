@@ -30,7 +30,7 @@ function AvaliableListingsPage() {
         <h1>Available Subleases</h1>
         <div className={styles.filters}>
 
-        <button>Creat a Listing</button>
+        <button>Create a Listing</button>
         <button>Filter icon</button>
         <button>sort icon</button>
       
