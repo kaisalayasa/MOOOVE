@@ -5,6 +5,7 @@ import './App.css'
 import MainPage from './pages/MainPage/MainPage'
 import AvaliableListingsPage from './pages/AvailableListingsPage/AvaliableListingsPage'
 import Navbar from './components/Navbar'
+import CreateListingPage from './pages/CreateListingPage/CreateListingPage'
 function App() {
  
 
@@ -13,7 +14,7 @@ function App() {
     <div className='temp'>
 
     <Navbar/>
-    <AvaliableListingsPage/>
+    <CreateListingPage/>
       </div>
     </>
   )
