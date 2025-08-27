@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './CreateListingPage.module.css'
+import img from '../../assets/listingpic.jpg'
 
 function CreateListingPage() {
   return (
@@ -7,7 +8,7 @@ function CreateListingPage() {
       <div className={styles.layout}>
         <div className={styles.main_container}>
         <h1 style={{textAlign:'center'}}>Create Your Listing</h1>
-        <form action="POST">
+        <form>
 
           <div className={styles.section_title}>
             <h2 style={{ borderBottom: '1px solid #d7d7d7', paddingBottom : "10px"}}>Basic Information</h2>
@@ -164,6 +165,74 @@ function CreateListingPage() {
                 <input type="number"  placeholder='E.g. 0.5'/> 
             </div>
           </div>
+          <div className={styles.section_title}>
+            <h2 style={{ borderBottom: '1px solid #d7d7d7', paddingBottom : "10px"}}>Images</h2>
+          </div>
+
+        
+            <label className={styles.upload_container}>
+              <h1>icon</h1>
+              <p>Click to upload images</p>
+              <p>Upload up to 10 high-quality photos (Max 5MB each)</p>
+              
+            <input type="file" style={{display:'none'}} />
+            
+            </label>
+            <div className={styles.preview_container}>
+              {/*fix the overflow */}
+              <img src={img} alt="" />
+              <img src={img} alt="" />
+              <img src={img} alt="" />
+              <img src={img} alt="" />
+              <img src={img} alt="" />
+           
+        
+
+
+            </div>
+            <div className={styles.text_area}>
+                <label> Description   </label>
+                <textarea  className={styles.text_area}name="description" id="" placeholder="Any other information you'd like to share about the sublease"></textarea>
+
+            </div>
+            <div className={styles.text_area}>
+                <label>House Rules   </label>
+                <textarea  className={styles.text_area}name="description" id="" placeholder="Any other information you'd like to share about the sublease"></textarea>
+
+            </div>
+            <div className={styles.section_title}>
+            <h2 style={{ borderBottom: '1px solid #d7d7d7', paddingBottom : "10px"}}>Contact Information</h2>
+          </div>
+
+          <div className={styles.grid_layout}>
+
+            <div className={styles.form_group}>
+                <label htmlFor="listing_title">Contact Name</label>
+                <input type="text"  placeholder='E.g. Cozy Studio near NYU'/> 
+            </div>
+            <div className={styles.form_group}>
+                <label htmlFor="listing_title">Phone Number</label>
+                <input type="num"  placeholder='123456789'/> 
+            </div>
+            <div className={styles.form_group}>
+                <label htmlFor="listing_title">Email</label>
+                <input type="email"  placeholder='1200$'/> 
+            </div>
+            <div className={styles.form_group}>
+                <label htmlFor="listing_title">Security Deposit ($)</label>
+                <input type="number"  placeholder='1200$'/> 
+            </div>
+          </div>
+
+          <div className={styles.submit_div}>
+            <button type='submit'>Create Listing</button>
+          </div>
+   
+
+  
+        
+
+          
 
 
 
