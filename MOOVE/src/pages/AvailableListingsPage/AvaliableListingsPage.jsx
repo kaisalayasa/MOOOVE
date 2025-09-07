@@ -4,7 +4,7 @@ import styles from './AvaliableListingsPage.module.css'
 import QuickFilters from '../../components/QuickFilters'
 import Footer from '../../components/Footer'
 
-function AvaliableListingsPage() {
+function AvailableListingsPage() {
   return (
     <>
     <div className={styles.main_layout}>
@@ -72,4 +72,4 @@ function AvaliableListingsPage() {
   )
 }
 
-export default AvaliableListingsPage
+export default AvailableListingsPage
