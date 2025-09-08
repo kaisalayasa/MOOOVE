@@ -1,8 +1,57 @@
 import React from 'react'
 import styles from './CreateListingPage.module.css'
 import img from '../../assets/listingpic.jpg'
-
+import { useState } from 'react'
 function CreateListingPage() {
+   // Basic Information
+  const [title, setTitle] = useState('');
+  const [college, setCollege] = useState('');
+  const [rent, setRent] = useState('');
+  const [deposit, setDeposit] = useState('');
+
+  // Lease Details
+  const [availableFrom, setAvailableFrom] = useState('');
+  const [availableUntil, setAvailableUntil] = useState('');
+  const [capacity, setCapacity] = useState('1'); // default 1 person
+  const [propertyType, setPropertyType] = useState('apartment');
+  const [bedrooms, setBedrooms] = useState('');
+  const [bathrooms, setBathrooms] = useState('');
+  const [squareFootage, setSquareFootage] = useState('');
+
+  // Amenities
+  const [amenities, setAmenities] = useState({
+    furnished: false,
+    petFriendly: false,
+    inUnitLaundry: false,
+    gymAccess: false,
+    utilitiesIncluded: false,
+    wifiIncluded: false,
+    parkingAvailable: false,
+    poolAccess: false,
+  });
+
+  // Location
+  const [address, setAddress] = useState({
+    street: '',
+    unit: '',
+    city: '',
+    state: '',
+    zip: '',
+    distanceToCampus: '',
+  });
+
+  // Images
+  const [images, setImages] = useState([]);
+
+  // Description & Rules
+  const [description, setDescription] = useState('');
+  const [rules, setRules] = useState('');
+
+  // Contact Information
+  const [contactName, setContactName] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  
   return (
    <>
       <div className={styles.layout}>
@@ -18,19 +67,21 @@ function CreateListingPage() {
 
             <div className={styles.form_group}>
                 <label htmlFor="listing_title">Listing Title</label>
-                <input type="text"  placeholder='E.g. Cozy Studio near NYU'/> 
+                <input type="text" onChange={(e)=>{setTitle(e.target.value)}} value={title}   placeholder='E.g. Cozy Studio near NYU'/> 
             </div>
             <div className={styles.form_group}>
-                <label htmlFor="listing_title">Near College/University</label>
-                <input type="text"  placeholder='E.g. Cozy Studio near NYU'/> 
+                <label htmlFor="listing_title">College/University</label>
+                <input type="text" onChange={(e)=>{setCollege(e.target.value)}} value={college} placeholder='E.g. Earlham College'/> 
+                
+                
             </div>
             <div className={styles.form_group}>
                 <label htmlFor="listing_title">Monthly Rent ($)</label>
-                <input type="number"  placeholder='1200$'/> 
+                <input type="number" onChange={(e)=>{setRent(e.target.value)}} value={rent} placeholder='1200$'/> 
             </div>
             <div className={styles.form_group}>
                 <label htmlFor="listing_title">Security Deposit ($)</label>
-                <input type="number"  placeholder='1200$'/> 
+                <input type="number" onChange={(e)=>{setDeposit(e.target.value)}} value={deposit} placeholder='1200$'/> 
             </div>
           </div>
           <div className={styles.section_title}>
@@ -41,15 +92,15 @@ function CreateListingPage() {
 
             <div className={styles.form_group}>
                 <label htmlFor="listing_title">Available From</label>
-                <input type="date"  placeholder='E.g. Cozy Studio near NYU'/> 
+                <input type="date" onChange={(e)=>{setAvailableFrom(e.target.value)}} value={availableFrom} placeholder='E.g. Cozy Studio near NYU'/> 
             </div>
             <div className={styles.form_group}>
                 <label htmlFor="listing_title">Available Until</label>
-                <input type="date"  placeholder='E.g. Cozy Studio near NYU'/> 
+                <input type="date" onChange={(e)=>{availableUntil(e.target.value)}} value={availableUntil}  placeholder='E.g. Cozy Studio near NYU'/> 
             </div>
             <div className={styles.form_group}>
                 <label htmlFor="num_select">Listing Title</label>
-                <select name="num_select" id="num_select">
+                <select onChange={(e)=>{setCapacity(e.target.value)}} value={capacity} name="num_select" id="num_select">
                   <option value="1">1 person</option>
                   <option value="2">2 person</option>
                   <option value="3">3 person</option>
@@ -58,7 +109,7 @@ function CreateListingPage() {
             </div>
             <div className={styles.form_group}>
                 <label htmlFor="property_type">Property Type</label>
-                  <select name="num_select" id="num_select">
+                  <select onChange={(e)=>{setPropertyType(e.target.value)}} value={propertyType} name="num_select" id="num_select">
                   <option value="apartment">Apartment</option>
                   <option value="house">House</option>
                   <option value="studio">Studio</option>
@@ -79,7 +130,7 @@ function CreateListingPage() {
             </div>
             <div className={styles.form_group}>
                <label htmlFor="size">Square Footage</label>
-              <input type="number" placeholder='E.g. 750' />
+              <input onChange={(e)=>{setSquareFootage(e.target.value)}} value={squareFootage} type="number" placeholder='E.g. 750' />
 
             </div>
           </div>
@@ -90,12 +141,18 @@ function CreateListingPage() {
           <div className={styles.grid_layout}>
             <div className={styles.checkbox_group}>
           <label htmlFor="fully_furnished" className={styles.checkbox_label}>
-            <input type="checkbox" id="fully_furnished" name="fully_furnished" />
+            <input 
+            type="checkbox"
+            checked={amenities.furnished}
+            onChange={(e) => setAmenities({...amenities, furnished: e.target.checked})}
+            id="fully_furnished" name="fully_furnished" />
             Fully Furnished
           </label>
 
           <label htmlFor="pet_friendly" className={styles.checkbox_label}>
-            <input type="checkbox" id="pet_friendly" name="pet_friendly" />
+            <input
+            onChange={(e)=>{setAmenities({...amenities,petFriendly:e.target.checked})}}
+            type="checkbox" id="pet_friendly" name="pet_friendly" />
             Pet Friendly
           </label>
 
@@ -218,10 +275,7 @@ function CreateListingPage() {
                 <label htmlFor="listing_title">Email</label>
                 <input type="email"  placeholder='1200$'/> 
             </div>
-            <div className={styles.form_group}>
-                <label htmlFor="listing_title">Security Deposit ($)</label>
-                <input type="number"  placeholder='1200$'/> 
-            </div>
+         
           </div>
 
           <div className={styles.submit_div}>
