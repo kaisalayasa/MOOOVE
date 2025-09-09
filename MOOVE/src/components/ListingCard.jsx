@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './ListingCard.module.css'
 import pic from '../assets/listingpic.jpg'
-function ListingCard({size="large"}) {
+function ListingCard({size="large",owner=false
+}) {
 
 
   const sizeClass = styles[size] || styles.medium;
@@ -14,7 +15,6 @@ function ListingCard({size="large"}) {
         <div className={styles.main_info}>
           <div>
             <h2>Cozy Studio Near Campus</h2>
-
           </div>
           <div>
             <h2>$750/mo</h2>
