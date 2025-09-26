@@ -1,6 +1,10 @@
 import React from 'react'
 import styles from './CreateListingPage.module.css'
 import img from '../../assets/listingpic.jpg'
+import { useNavigate } from "react-router-dom";
+
+import axios from 'axios'
+
 import { useState } from 'react'
 function CreateListingPage() {
    // Basic Information
@@ -51,6 +55,22 @@ function CreateListingPage() {
   const [contactName, setContactName] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [contactEmail, setContactEmail] = useState('');
+
+  const handleSubmit= async (e)=>{
+    e.preventDefault();
+    const listingData = {title,rent,availableFrom,availableUntil,bathrooms,bathrooms,distanceToCampus};
+    try{
+      axios.post()
+
+      useNavigate('/avaliable-listings-page')
+    }
+    catch(error){
+      console.log(error);
+      alert('cant create listing')
+
+    }
+
+  }
   
   return (
    <>

@@ -12,9 +12,24 @@ mongoose.connect(process.env.MONGO_URI)
 app.use(cors());
 app.use(express.json()); 
 
+let listings=[]
+
 app.get('/', (req, res) => {
   res.send('Backend is running!');
 });
+
+app.post('/api/listing',(req,res)=>{
+  const newListing= req.body;
+  newListing.id = listings.length +1;
+  listings.push(newListing);
+  res.status(201).json(newListing);
+});
+
+app.get('/api/listings',(req,res)=>{
+  res.status(200).json(listings)
+})
+
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
