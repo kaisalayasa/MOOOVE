@@ -1,10 +1,35 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import ListingCard from '../../components/ListingCard'
 import styles from './AvaliableListingsPage.module.css'
 import QuickFilters from '../../components/QuickFilters'
 import Footer from '../../components/Footer'
+import axios from 'axios'
 
 function AvailableListingsPage() {
+
+
+const [listings,setListings] = useState([]);
+  
+
+useEffect(() => {
+  const savedData = localStorage.getItem("myData");
+  if (savedData) {
+    setListings(JSON.parse(savedData));
+  }
+
+  const fetchListings = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/api/listing');
+      setListings(res.data);
+      localStorage.setItem("myData", JSON.stringify(res.data));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchListings();
+}, []);
+
   return (
     <>
     <div className={styles.main_layout}>
@@ -42,16 +67,11 @@ function AvailableListingsPage() {
       
      
        <div className={styles.listings_container}>
-        <ListingCard size='small'/>
-        <ListingCard size='small'/>
-        <ListingCard size='small'/> 
-        <ListingCard size='small'/>
-     
-        <ListingCard size='small'/>
-        <ListingCard size='small'/> 
-        <ListingCard size='small'/>
-        <ListingCard size='small'/>
+        {listings.map((listing, index) => (
+        <ListingCard key={listing.id} size="small" data={listing} />
+        ))}
         
+     
         
 
     </div>
