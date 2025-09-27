@@ -23,9 +23,10 @@ app.post('/api/listing',(req,res)=>{
   newListing.id = listings.length +1;
   listings.push(newListing);
   res.status(201).json(newListing);
+  console.log(newListing)
 });
 
-app.get('/api/listings',(req,res)=>{
+app.get('/api/listing',(req,res)=>{
   res.status(200).json(listings)
 })
 
