@@ -14,8 +14,6 @@ function CreateListingPage() {
   // Lease Details
   const [availableFrom, setAvailableFrom] = useState('');
   const [availableUntil, setAvailableUntil] = useState('');
-  const [capacity, setCapacity] = useState('1'); // default 1 person
-  const [propertyType, setPropertyType] = useState('apartment');
   const [bedrooms, setBedrooms] = useState('');
   const [bathrooms, setBathrooms] = useState('');
   const [squareFootage, setSquareFootage] = useState('');
@@ -51,7 +49,7 @@ function CreateListingPage() {
 
   // Contact Information
   const [contactName, setContactName] = useState('');
-  const [contactNumber, setContactNumber] = useState('');
+  const [instagramContact, setinstagramContact] = useState('');
   const [contactEmail, setContactEmail] = useState('');
 
   const navigate = useNavigate();
@@ -65,7 +63,6 @@ function CreateListingPage() {
       deposit,
       availableFrom,
       availableUntil,
-      capacity,
       propertyType,
       bedrooms,
       bathrooms,
@@ -76,7 +73,7 @@ function CreateListingPage() {
       description,
       rules,
       contactName,
-      contactNumber,
+      instagramContact,
       contactEmail,
     };
     try {
@@ -132,22 +129,11 @@ function CreateListingPage() {
                 <input type="date" onChange={(e) => setAvailableUntil(e.target.value)} value={availableUntil} />
               </div>
               <div className={styles.form_group}>
-                <label htmlFor="capacity">Capacity</label>
-                <select onChange={(e) => setCapacity(e.target.value)} value={capacity}>
-                  <option value="1">1 person</option>
-                  <option value="2">2 person</option>
-                  <option value="3">3 person</option>
-                  <option value="4">4+ person</option>
-                </select>
+              
+               
               </div>
               <div className={styles.form_group}>
-                <label htmlFor="property_type">Property Type</label>
-                <select onChange={(e) => setPropertyType(e.target.value)} value={propertyType}>
-                  <option value="apartment">Apartment</option>
-                  <option value="house">House</option>
-                  <option value="studio">Studio</option>
-                  <option value="dorm">Dorm</option>
-                </select>
+              
               </div>
             </div>
 
@@ -184,10 +170,6 @@ function CreateListingPage() {
                   <input type="checkbox" checked={amenities.inUnitLaundry} onChange={(e) => setAmenities({ ...amenities, inUnitLaundry: e.target.checked })} id="in_unit_laundry" />
                   In-unit Laundry
                 </label>
-                <label htmlFor="gym_access" className={styles.checkbox_label}>
-                  <input type="checkbox" checked={amenities.gymAccess} onChange={(e) => setAmenities({ ...amenities, gymAccess: e.target.checked })} id="gym_access" />
-                  Gym Access
-                </label>
               </div>
 
               <div className={styles.checkbox_group}>
@@ -203,10 +185,7 @@ function CreateListingPage() {
                   <input type="checkbox" checked={amenities.parkingAvailable} onChange={(e) => setAmenities({ ...amenities, parkingAvailable: e.target.checked })} id="parking_available" />
                   Parking Available
                 </label>
-                <label htmlFor="pool_access" className={styles.checkbox_label}>
-                  <input type="checkbox" checked={amenities.poolAccess} onChange={(e) => setAmenities({ ...amenities, poolAccess: e.target.checked })} id="pool_access" />
-                  Pool Access
-                </label>
+                
               </div>
             </div>
 
@@ -282,8 +261,8 @@ function CreateListingPage() {
                 <input type="text" value={contactName} onChange={(e) => setContactName(e.target.value)} placeholder='Your Name' />
               </div>
               <div className={styles.form_group}>
-                <label>Phone Number</label>
-                <input type="text" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} placeholder='123456789' />
+                <label>Instagram</label>
+                <input type="text" value={instagramContact} onChange={(e) => setinstagramContact(e.target.value)} placeholder='kaisalayasa@insta' />
               </div>
               <div className={styles.form_group}>
                 <label>Email</label>
