@@ -14,6 +14,15 @@ app.use(express.json());
 
 let listings=[]
 
+const authRoutes = require('./routes/auth.js');
+app.use('api/auth',authRoutes);
+
+const { authenticateJWT } = require('./middleware/auth');
+app.get('/api/profile', authenticateJWT, (req, res) => {
+  res.json({ message: 'Protected route', user: req.user });
+});
+
+
 app.get('/', (req, res) => {
   res.send('Backend is running!');
 });
