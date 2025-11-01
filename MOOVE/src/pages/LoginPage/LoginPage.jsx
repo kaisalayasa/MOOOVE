@@ -1,11 +1,33 @@
 import React, { useState } from 'react'
 import styles from './LoginPage.module.css'
+import axios from 'axios'
+
+
+
 
 
 function LoginPage() {
     const [user,setUser] = useState('')
     const [email,setemail] = useState('')
     const [password,setPassword] = useState('')
+
+  
+
+    const handleSubmit = async (e)=>{
+        e.preventDefault()
+        const userData = {email : email, password: password}
+        try{
+            const res = await axios.post('/api/auth/login', userData)
+            console.log("user logged in")
+            console.log(res.data)
+
+        }catch(err){
+            console.error(err.response);
+
+        }
+
+        
+    }
   return (
     <>
     <div className={styles.layout}>
@@ -18,16 +40,16 @@ function LoginPage() {
 
                 </div>
                 
-            <form action="">
+            <form onSubmit={handleSubmit}>
                 <div className={styles.input_field}>
                     <label htmlFor="email" >Email</label>
-                    <input type="text" placeholder='real@earlhm.edu' />
+                    <input type="text" onChange={(e)=>setemail(e.target.value)} placeholder='real@earlhm.edu' />
 
                 </div>
 
                 <div  className={styles.input_field}>
                      <label htmlFor="password" >Password</label>
-                    <input type="password" placeholder='real@earlhm.edu' />
+                    <input type="password"  onChange={(e)=> setPassword(e.target.value)} placeholder='real@earlhm.edu' />
 
                 </div>
 

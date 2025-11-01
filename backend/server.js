@@ -15,7 +15,7 @@ app.use(express.json());
 let listings=[]
 
 const authRoutes = require('./routes/auth.js');
-app.use('api/auth',authRoutes);
+app.use('/api/auth',authRoutes);
 
 const { authenticateJWT } = require('./middleware/auth');
 app.get('/api/profile', authenticateJWT, (req, res) => {
