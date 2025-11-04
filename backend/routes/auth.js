@@ -1,13 +1,17 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config({path:'../.env'});
 const router = express.Router();
 
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
+console.log('JWT_EXPIRES_IN:', process.env.JWT_EXPIRES_IN);
 
 const users=[];
-const isEduEmail = (email) =>{email.toLowerCase().endsWith('.edu');}
+const isEduEmail = (email) =>{ return email.toLowerCase().endsWith('.edu');}
 
 router.post('/signup',async (req,res)  =>{
+   
     const {email,password} = req.body;
     if(!email || !password){
         return res.status(400).json({error:'Email and Password are required.'});
@@ -23,12 +27,14 @@ router.post('/signup',async (req,res)  =>{
     }
     const passwordHash = await bcrypt.hash(password,10);
     const user = {id:users.length+1, email: email.toLowerCase(), password: passwordHash};
-    users.push(user)
+ 
     const token = jwt.sign(
         {sub:user.id , email:user.email},
         process.env.JWT_SECRET,
-        {expiresIn: process.env.JWT.EXPIRES_IN}
+        {expiresIn: process.env.JWT_EXPIRES_IN}
+        
     )
+    users.push(user)
     res.status(201).json({message:"User created",token})
 
 
