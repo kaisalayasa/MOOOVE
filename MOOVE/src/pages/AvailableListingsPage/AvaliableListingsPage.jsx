@@ -4,8 +4,20 @@ import styles from './AvaliableListingsPage.module.css'
 import QuickFilters from '../../components/QuickFilters'
 import Footer from '../../components/Footer'
 import axios from 'axios'
+import { hasToken } from '../../utils/hasToken'
+import { useNavigate } from 'react-router-dom'
+
 
 function AvailableListingsPage() {
+  const token = localStorage.getItem('token');
+  console.log(token,'here is the token')
+  const navigate = useNavigate();
+
+  if(!hasToken(token)){
+    navigate('/login');
+  }
+    
+  
 
 
 const [listings,setListings] = useState([]);
