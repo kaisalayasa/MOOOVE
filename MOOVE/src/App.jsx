@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import CreateListingPage from './pages/CreateListingPage/CreateListingPage'
 import {BrowserRouter,Routes, Route } from "react-router-dom"
 import ViewListingPage from './pages/ViewListingPage/ViewListingPage'
+import SignUp from './pages/SignUpPage/SignUp'
 function App() {
  
 
@@ -24,6 +25,7 @@ function App() {
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/*' element={<div><h1>doesnt exist</h1></div>}/>
       <Route path= '/view-listing' element={<ViewListingPage/>}/>
+      <Route path= '/sign-up' element ={ <SignUp/>}/>
      
     
 
