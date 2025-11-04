@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './LoginPage.module.css'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 
@@ -7,6 +8,7 @@ import axios from 'axios'
 
 
 function LoginPage() {
+    const navigate = useNavigate();
     const [user,setUser] = useState('')
     const [email,setemail] = useState('')
     const [password,setPassword] = useState('')
@@ -15,11 +17,14 @@ function LoginPage() {
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
-        const userData = {email : email, password: password}
+        const userData = {email : email, password: password};
         try{
             const res = await axios.post('/api/auth/login', userData)
             console.log("user logged in")
             console.log(res.data)
+            localStorage.setItem('token', res.data.token);
+
+            navigate('/avaliable-listings-page')
 
         }catch(err){
             console.error(err.response);
